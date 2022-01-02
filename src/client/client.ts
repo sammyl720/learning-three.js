@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 const scene = new THREE.Scene();
-
+const scene2 = new THREE.Scene();
 
 const camera1 = new THREE.PerspectiveCamera(
   75,
@@ -57,7 +57,9 @@ cube.scale.y = 0.5;
 cube.scale.z = 0.5;
 
 scene.add(cube);
-console.dir(scene)
+
+const cube2 = new THREE.Mesh(geometry, material);
+scene2.add(cube2); 
 
 // window.addEventListener('resize', onWindowResize, false);
 
@@ -73,13 +75,14 @@ function animate(){
   requestAnimationFrame(animate);
   cube.rotation.x += 0.01;
   cube.rotation.y += 0.01;
+  cube2.rotation.y += 0.01;
   render();
 }
 
 function render(){
   renderer1.render(scene, camera1);
   renderer2.render(scene, camera2);
-  renderer3.render(scene, camera3);
+  renderer3.render(scene2, camera3);
   renderer4.render(scene, camera4);
 }
 
